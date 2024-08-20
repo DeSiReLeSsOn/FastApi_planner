@@ -11,7 +11,7 @@ event_router = APIRouter(
 events = []
 
 
-@event_router.get("/", response_model=List{Event})
+@event_router.get("/", response_model=List[Event])
 async def retrieve_all_events() -> List[Event]:
     return events 
 
