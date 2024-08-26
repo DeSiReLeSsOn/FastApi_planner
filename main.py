@@ -1,13 +1,19 @@
 from fastapi import FastAPI 
+from fastapi.responses import RedirectResponse
+
+
 from routes.users import user_router 
 from routes.events import event_router
-from database.connection import conn
+from database.connection import Settings
 
 
 import uvicorn 
 
 
 app = FastAPI()
+
+
+settings = Settings()
 
 
 #Regsiter routes 
@@ -17,9 +23,13 @@ app.include_router(event_router, prefix="/event")
 
 
 @app.on_event("startup")
-def on_startup():
-    conn()
+async def init_db():
+    await settings.initialize_database()
 
+
+@app.get("/")
+async def home():
+    return RedirectResponse(url="/event/")
 
 
 if __name__ == '__main__':
