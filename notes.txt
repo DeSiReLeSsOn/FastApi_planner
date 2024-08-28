@@ -1,1 +1,6 @@
-mongod --dbpath store
+mongod --dbpath store 
+
+
+# проверить занят ли порт 27017 
+lsof -i:27017 
+ps aux | grep mongod
