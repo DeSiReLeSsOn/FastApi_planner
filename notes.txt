@@ -1,4 +1,4 @@
-mongod --dbpath store 
+mongod --dbpath store --port 27017
 
 
 # проверить занят ли порт 27017 
