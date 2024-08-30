@@ -49,7 +49,7 @@ async def create_event(body: Event, user: str = Depends(authenticate)) -> dict:
 
 
 
-@event_router.put("/edit/{id}", response_model=Event)
+@event_router.put("/{id}", response_model=Event)
 async def update_event(id: PydanticObjectId, 
                        body: EventUpdate, 
                        user: str = Depends(authenticate)) -> Event:
